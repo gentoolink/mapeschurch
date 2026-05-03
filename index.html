@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapes Baptist Church | Vanderhoof, BC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1B3A5C;
+      --navy-light: #2C5282;
+      --gold: #C8A45E;
+      --gold-light: #E8D5A3;
+      --cream: #FAF7F2;
+      --warm-white: #FDFCFA;
+      --ink: #2D2D2D;
+      --ink-muted: #6B6B6B;
+      --border: #E8E2D9;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--warm-white);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 16px rgba(27,58,92,0.25);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 0.9rem 0;
+    }
+
+    .nav-logo img {
+      height: 48px;
+      width: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 0.25rem;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.9rem 0.85rem;
+      border-radius: 3px;
+      transition: color 0.2s, background 0.2s;
+      display: block;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--gold);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+      font-weight: 600 !important;
+      padding: 0.6rem 1.2rem !important;
+      border-radius: 3px;
+      margin-left: 0.5rem;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold-light) !important;
+      color: var(--navy) !important;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      height: 92vh;
+      min-height: 560px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(27,58,92,0.55) 0%, rgba(27,58,92,0.75) 100%),
+        url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1600&q=80') center/cover no-repeat;
+    }
+
+    .hero-cross {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.06;
+      font-size: 60vw;
+      font-family: 'Playfair Display', serif;
+      color: white;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+      max-width: 780px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      line-height: 1.1;
+    }
+
+    .hero-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-style: italic;
+      opacity: 0.88;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 0.85rem 2rem;
+      border-radius: 3px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: #e8c97a; }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 3px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      transition: border-color 0.2s, background 0.2s;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .hero-service-badge {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50px;
+      padding: 0.6rem 1.5rem;
+      color: white;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      white-space: nowrap;
+    }
+
+    .hero-service-badge strong { color: var(--gold); }
+
+    /* ─── SECTIONS ─── */
+    .section {
+      padding: 5rem 2rem;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.6rem, 3vw, 2.25rem);
+      color: var(--navy);
+      margin-bottom: 0.85rem;
+    }
+
+    .section-header p {
+      font-size: 0.975rem;
+      color: var(--ink-muted);
+      line-height: 1.7;
+    }
+
+    /* ─── ABOUT ─── */
+    .about-section { background: var(--cream); }
+
+    .about-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 3px solid var(--gold);
+      border-radius: 4px;
+      transform: translate(12px, 12px);
+      z-index: -1;
+    }
+
+    .about-text h3 {
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      margin-bottom: 1.25rem;
+      line-height: 1.75;
+    }
+
+    .about-verse {
+      border-left: 3px solid var(--gold);
+      padding-left: 1.1rem;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--navy-light);
+      line-height: 1.65;
+      margin: 1.5rem 0;
+    }
+
+    .about-verse cite {
+      display: block;
+      font-size: 0.8rem;
+      font-style: normal;
+      margin-top: 0.5rem;
+      color: var(--ink-muted);
+    }
+
+    /* ─── SERVICE TIMES ─── */
+    .service-section {
+      background: var(--navy);
+      color: white;
+      text-align: center;
+    }
+
+    .service-section .section-label { color: var(--gold); }
+    .service-section .section-header h2 { color: white; }
+    .service-section .section-header p { color: rgba(255,255,255,0.65); }
+
+    .service-times {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      padding: 2rem 1.5rem;
+    }
+
+    .service-day {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-time {
+      color: var(--gold);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-desc {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+
+    /* ─── MINISTRIES ─── */
+    .ministries-section { background: var(--warm-white); }
+
+    .ministry-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .ministry-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .ministry-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(27,58,92,0.1);
+    }
+
+    .ministry-img {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+    }
+
+    .ministry-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .ministry-card:hover .ministry-img img { transform: scale(1.04); }
+
+    .ministry-body { padding: 1.5rem; }
+    .ministry-body h3 { font-size: 1.15rem; color: var(--navy); margin-bottom: 0.5rem; }
+    .ministry-body p { font-size: 0.875rem; color: var(--ink-muted); line-height: 1.65; }
+
+    /* ─── PASTOR ─── */
+    .pastor-section { background: var(--cream); }
+
+    .pastor-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .pastor-photo {
+      aspect-ratio: 3/4;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .pastor-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pastor-text h3 {
+      font-size: 1.75rem;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+
+    .pastor-role {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .pastor-text p {
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .pastor-contact {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+
+    .pastor-contact a {
+      font-size: 0.85rem;
+      color: var(--navy-light);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .pastor-contact a:hover { color: var(--gold); }
+
+    /* ─── GALLERY ─── */
+    .gallery-section { background: var(--warm-white); }
+
+    .gallery-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 220px);
+      gap: 0.75rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 3px;
+      transition: transform 0.3s;
+    }
+
+    .gallery-grid img:hover { transform: scale(1.02); }
+
+    .gallery-grid .g1 { grid-column: span 2; grid-row: span 2; height: 100%; }
+
+    /* ─── CONTACT ─── */
+    .contact-section { background: var(--cream); }
+
+    .contact-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-info h3 {
+      font-size: 1.4rem;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+      color: var(--gold);
+    }
+
+    .contact-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-value {
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .contact-value a:hover { color: var(--navy-light); }
+
+    .contact-form {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+    }
+
+    .contact-form h3 {
+      font-size: 1.3rem;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group { margin-bottom: 1rem; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 3px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      background: var(--warm-white);
+      color: var(--ink);
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem 1.5rem;
+    }
+
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: white;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+    }
+
+    footer h5 {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li { margin-bottom: 0.6rem; }
+
+    .footer-links a {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pastor-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+      .gallery-grid .g1 { grid-column: span 2; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-grid .g1 { grid-column: span 1; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ─── -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://www.mapeschurch.com/sites/default/files/Mapes%20Church%20Logo%20transparent%2070x70_0.png" alt="Mapes Baptist Church">
+    <span>Mapes Baptist Church</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#ministries">Ministries</a></li>
+    <li><a href="#pastor">Pastor</a></li>
+    <li><a href="sermons.html">Sermons</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Visit Us</a></li>
+  </ul>
+  <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-cross">✝</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Vanderhoof, British Columbia</div>
+    <h1>Welcome to<br>Mapes Baptist Church</h1>
+    <p class="hero-quote">
+      "For God did not send his Son into the world to condemn the world,<br>
+      but to save the world through him."<br>
+      <span style="opacity:0.6; font-size:0.85em;">— John 3:17</span>
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Contact Us</a>
+      <a href="#about" class="btn-outline">Learn More</a>
+    </div>
+  </div>
+  <div class="hero-service-badge">
+    <span>🕐</span> Sunday Worship — <strong>11:00 AM</strong>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section class="section about-section" id="about">
+  <div class="about-grid">
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=800&q=80" alt="Church building">
+    </div>
+    <div class="about-text">
+      <div class="section-label">About Us</div>
+      <h3>Glorifying God in Ministry and Mission</h3>
+      <p>
+        Mapes Baptist Church is a beacon of faith and community nestled in the serene countryside of Vanderhoof, BC. Located on the picturesque Blackwater Road, our church stands as a testament to the unwavering spirit of worship and fellowship.
+      </p>
+      <p>
+        We exist to change hearts and change lives. Through the teachings of the Bible and the power of community, we inspire transformation that leads to a more purposeful and spiritually enriched life.
+      </p>
+      <blockquote class="about-verse">
+        "But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, self-control; against such things there is no law."
+        <cite>— Galatians 5:22-23</cite>
+      </blockquote>
+      <p>
+        Whether you are a long-time resident or just passing through, you are warmly invited to join us for a service, a prayer, or even just a quiet moment of reflection.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICE TIMES ─── -->
+<section class="section service-section" id="services">
+  <div class="section-header">
+    <div class="section-label">Join Us</div>
+    <h2>Come and Worship With Us</h2>
+    <p>We gather each week to celebrate faith, hope, and love in Christ. All are welcome — no matter where you are on your journey.</p>
+  </div>
+  <div class="service-times">
+    <div class="service-card">
+      <div class="service-day">Sunday</div>
+      <div class="service-time">11:00 AM</div>
+      <div class="service-desc">Morning Worship Service — prayer, music, and God's Word</div>
+    </div>
+    <div class="service-card">
+      <div class="service-day">Children's Church</div>
+      <div class="service-time">During Service</div>
+      <div class="service-desc">Age-appropriate teaching in a loving, welcoming environment for our younger members</div>
+    </div>
+    <div class="service-card">
+      <div class="service-day">Weekly</div>
+      <div class="service-time">Ongoing</div>
+      <div class="service-desc">Prayer meetings, Bible studies, and fellowship throughout the week — contact us for details</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MINISTRIES ─── -->
+<section class="section ministries-section" id="ministries">
+  <div class="section-header">
+    <div class="section-label">Get Involved</div>
+    <h2>Our Ministries</h2>
+    <p>There is a place for everyone at Mapes Baptist Church. Find where God is calling you to serve and grow.</p>
+  </div>
+  <div class="ministry-grid">
+    <div class="ministry-card">
+      <div class="ministry-img">
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80" alt="Children's Ministry">
+      </div>
+      <div class="ministry-body">
+        <h3>Children's Ministry</h3>
+        <p>Dedicated age-appropriate teaching in a loving and welcoming environment. Children grow in faith through song, story, and fellowship.</p>
+      </div>
+    </div>
+    <div class="ministry-card">
+      <div class="ministry-img">
+        <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&q=80" alt="Shoebox Ministry">
+      </div>
+      <div class="ministry-body">
+        <h3>Shoebox Ministry</h3>
+        <p>Each year Mapes Church packs shoeboxes for needy children around the world — a tangible expression of God's love across borders.</p>
+      </div>
+    </div>
+    <div class="ministry-card">
+      <div class="ministry-img">
+        <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&q=80" alt="Prayer">
+      </div>
+      <div class="ministry-body">
+        <h3>Prayer & Praise</h3>
+        <p>We believe in the power of prayer. Submit your prayer requests and praise reports — our community stands with you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PASTOR ─── -->
+<section class="section pastor-section" id="pastor">
+  <div class="pastor-grid">
+    <div class="pastor-photo">
+      <img src="https://www.mapeschurch.com/sites/default/files/inline-images/DSC_9862.JPG" alt="Pastor Ron and Linda DeMoss">
+    </div>
+    <div class="pastor-text">
+      <div class="section-label">Our Pastor</div>
+      <h3>Pastor Ron DeMoss</h3>
+      <div class="pastor-role">Lead Pastor</div>
+      <p>
+        Pastor Ron DeMoss has faithfully led the Mapes Baptist Church family for over 13 years alongside his beloved wife Linda, who went to be with the Lord on July 27, 2025. Together, they built a legacy of grace, compassion, and unwavering dedication to God's Word.
+      </p>
+      <p>
+        Pastor Ron continues that mission today, bringing heartfelt teaching and pastoral care rooted in Scripture while guiding us through the challenges of life with hope and faith.
+      </p>
+      <div class="pastor-contact">
+        <a href="tel:+12505677639">📞 250-567-7639</a>
+        <a href="mailto:redemoss@gmail.com">✉ redemoss@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GALLERY ─── -->
+<section class="section gallery-section" id="gallery">
+  <div class="section-header">
+    <div class="section-label">Our Community</div>
+    <h2>Life at Mapes</h2>
+    <p>A glimpse into worship, fellowship, and the community we share in Christ.</p>
+  </div>
+  <div class="gallery-grid">
+    <img class="g1" src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=900&q=80" alt="Sunday worship">
+    <img src="https://images.unsplash.com/photo-1504052434569-70a583f257f8?w=400&q=80" alt="Congregation">
+    <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=400&q=80" alt="Church building">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Fellowship">
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section class="section contact-section" id="contact">
+  <div class="section-header">
+    <div class="section-label">Get in Touch</div>
+    <h2>Reach Out</h2>
+    <p>We'd love to hear from you. Whether you have a question, prayer request, or just want to say hello.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Visit or Contact Us</h3>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Address</div>
+          <div class="contact-value">11054 Blackwater Rd<br>Vanderhoof, BC, Canada V0J 3A1</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Office Phone</div>
+          <div class="contact-value"><a href="tel:+12505674673">250-567-4673</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉</div>
+        <div>
+          <div class="contact-label">Pastor Ron</div>
+          <div class="contact-value"><a href="mailto:redemoss@gmail.com">redemoss@gmail.com</a><br><a href="tel:+12505677639">250-567-7639</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">💰</div>
+        <div>
+          <div class="contact-label">Tithes & Offerings</div>
+          <div class="contact-value"><a href="mailto:tithes.mapes@gmail.com">tithes.mapes@gmail.com</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Send a Message</h3>
+      <form onsubmit="event.preventDefault(); this.innerHTML='<p style=\'color:var(--gold);font-weight:600;\'>Thank you! We\'ll be in touch soon.</p>'">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="John Smith" required>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="john@example.com" required>
+        </div>
+        <div class="form-group">
+          <label>Message or Prayer Request</label>
+          <textarea placeholder="How can we pray for you?" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%; margin-top:0.5rem;">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h4>Mapes Baptist Church</h4>
+      <p>A beacon of faith and community in the serene countryside of Vanderhoof, BC. Worship with us every Sunday at 11:00 AM.</p>
+    </div>
+    <div>
+      <h5>Quick Links</h5>
+      <ul class="footer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <ul class="footer-links">
+        <li>11054 Blackwater Rd</li>
+        <li>Vanderhoof, BC V0J 3A1</li>
+        <li><a href="tel:+12505674673">250-567-4673</a></li>
+        <li><a href="mailto:redemoss@gmail.com">redemoss@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Mapes Baptist Church. All rights reserved.</span>
+    <span>11054 Blackwater Rd, Vanderhoof, BC</span>
+  </div>
+</footer>
+
+</body>
+</html>

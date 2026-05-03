@@ -428,6 +428,35 @@
     .ministry-body h3 { font-size: 1.15rem; color: var(--navy); margin-bottom: 0.5rem; }
     .ministry-body p { font-size: 0.875rem; color: var(--ink-muted); line-height: 1.65; }
 
+    /* ─── MISSIONS ─── */
+    .missions-section { background: var(--cream); }
+
+    .missions-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .mission-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .mission-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(27,58,92,0.1);
+    }
+
+    .mission-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .mission-card h3 { font-size: 1.1rem; color: var(--navy); margin-bottom: 0.5rem; }
+    .mission-card p { font-size: 0.875rem; color: var(--ink-muted); line-height: 1.65; }
+
     /* ─── PASTOR ─── */
     .pastor-section { background: var(--cream); }
 
@@ -708,6 +737,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#ministries">Ministries</a></li>
+    <li><a href="#missions">Missions</a></li>
     <li><a href="#pastor">Pastor</a></li>
     <li><a href="sermons.html">Sermons</a></li>
     <li><a href="give.html">Give</a></li>
@@ -830,6 +860,37 @@
         <h3>Prayer & Praise</h3>
         <p>We believe in the power of prayer. Submit your prayer requests and praise reports — our community stands with you.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MISSIONS ─── -->
+<section class="section missions-section" id="missions">
+  <div class="section-header">
+    <div class="section-label">Serving Beyond</div>
+    <h2>Missions & Outreach</h2>
+    <p>Mapes Baptist Church is committed to sharing God's love beyond our own community — locally and around the world.</p>
+  </div>
+  <div class="missions-grid">
+    <div class="mission-card">
+      <div class="mission-icon">🌍</div>
+      <h3>Global Partnerships</h3>
+      <p>We support missionaries and ministries around the world through prayer, financial giving, and practical partnership.</p>
+    </div>
+    <div class="mission-card">
+      <div class="mission-icon">🤝</div>
+      <h3>Local Community</h3>
+      <p>From food drives to neighbourhood outreach, we actively seek ways to serve the people of Vanderhoof and the surrounding area.</p>
+    </div>
+    <div class="mission-card">
+      <div class="mission-icon">📦</div>
+      <h3>Shoebox Ministry</h3>
+      <p>Each year we pack shoeboxes for Operation Christmas Child, bringing hope and the gospel to children in need worldwide.</p>
+    </div>
+    <div class="mission-card">
+      <div class="mission-icon">🍞</div>
+      <h3>Fellowship & Welcome</h3>
+      <p>We open our doors to all — newcomers, seekers, and neighbours — creating a space where everyone belongs.</p>
     </div>
   </div>
 </section>

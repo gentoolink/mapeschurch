@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Give | Mapes Baptist Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1B3A5C;
+      --navy-light: #2C5282;
+      --gold: #C8A45E;
+      --gold-light: #E8D5A3;
+      --cream: #FAF7F2;
+      --warm-white: #FDFCFA;
+      --ink: #2D2D2D;
+      --ink-muted: #6B6B6B;
+      --border: #E8E2D9;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--warm-white);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 16px rgba(27,58,92,0.25);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 0.9rem 0;
+    }
+
+    .nav-logo img {
+      height: 48px;
+      width: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 0.25rem;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.9rem 0.85rem;
+      border-radius: 3px;
+      transition: color 0.2s, background 0.2s;
+      display: block;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--gold);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+      font-weight: 600 !important;
+      padding: 0.6rem 1.2rem !important;
+      border-radius: 3px;
+      margin-left: 0.5rem;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold-light) !important;
+      color: var(--navy) !important;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      background: var(--navy);
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+    }
+
+    .page-hero .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ─── GIVE SECTION ─── */
+    .give-section {
+      padding: 5rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .give-intro {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .give-intro h2 {
+      font-size: 1.75rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .give-intro p {
+      color: var(--ink-muted);
+      font-size: 0.975rem;
+    }
+
+    .give-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .give-card h3 {
+      font-size: 1.3rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .give-card p {
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .give-email {
+      display: inline-block;
+      background: var(--cream);
+      border: 2px solid var(--gold);
+      border-radius: 4px;
+      padding: 0.85rem 1.5rem;
+      font-family: 'Inter', monospace;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+      margin: 0.5rem 0;
+    }
+
+    .give-note {
+      font-size: 0.825rem;
+      color: var(--ink-muted);
+      margin-top: 0.75rem;
+    }
+
+    .give-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    .give-list li {
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      padding: 0.4rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .give-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .give-address {
+      background: var(--cream);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.7;
+      margin-top: 1rem;
+    }
+
+    .give-address strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: white;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+    }
+
+    footer h5 {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li { margin-bottom: 0.6rem; }
+
+    .footer-links a {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .give-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ─── -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://www.mapeschurch.com/sites/default/files/Mapes%20Church%20Logo%20transparent%2070x70_0.png" alt="Mapes Baptist Church">
+    <span>Mapes Baptist Church</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#ministries">Ministries</a></li>
+    <li><a href="index.html#pastor">Pastor</a></li>
+    <li><a href="sermons.html">Sermons</a></li>
+    <li><a href="give.html" class="active">Give</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Visit Us</a></li>
+  </ul>
+  <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
+</nav>
+
+<!-- ─── PAGE HERO ─── -->
+<section class="page-hero">
+  <div class="section-label">Support the Ministry</div>
+  <h1>How to Give</h1>
+  <p>Simple, secure ways to support the work of Mapes Baptist Church.</p>
+</section>
+
+<!-- ─── GIVE CONTENT ─── -->
+<section class="give-section">
+
+  <div class="give-card">
+    <h3>💳 Interac e-Transfer (Canada)</h3>
+    <p>No fees to the church.* Most banks support Interac e-Transfer. Use the email below as the recipient.</p>
+    <div class="give-email">tithes.mapes@gmail.com</div>
+    <p class="give-note">*Some banks may charge the sender a small e-Transfer fee.</p>
+  </div>
+
+  <div class="give-card">
+    <h3>🙏 Give In Person</h3>
+    <p>Place cash or cheque in the offering during a service. Cheques payable to <strong>Mapes Baptist Church</strong>.</p>
+  </div>
+
+  <div class="give-card">
+    <h3>📬 Give by Mail</h3>
+    <p>Mail cheques to:</p>
+    <div class="give-address">
+      <strong>Mapes Baptist Church</strong>
+      11054 Blackwater Rd<br>
+      Vanderhoof, BC, Canada V0J 3A1
+    </div>
+  </div>
+
+  <div class="give-card">
+    <h3>💳 Online Giving (Cards)</h3>
+    <p>Prefer debit or credit? We're setting this up. When ready, you'll be able to give securely online here.</p>
+  </div>
+
+  <div class="give-card">
+    <h3>📋 Receipts &amp; Questions</h3>
+    <p>For a receipt or inquiries, contact us at <a href="mailto:tithes.mapes@gmail.com" style="color:var(--navy-light);font-weight:500;">tithes.mapes@gmail.com</a></p>
+    <ul class="give-list">
+      <li>All gifts are tax-deductible if earmarked for the general fund</li>
+      <li>We will provide an annual giving statement for your records</li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h4>Mapes Baptist Church</h4>
+      <p>A beacon of faith and community in the serene countryside of Vanderhoof, BC. Worship with us every Sunday at 11:00 AM.</p>
+    </div>
+    <div>
+      <h5>Quick Links</h5>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="sermons.html">Sermons</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <ul class="footer-links">
+        <li>11054 Blackwater Rd</li>
+        <li>Vanderhoof, BC V0J 3A1</li>
+        <li><a href="tel:+12505674673">250-567-4673</a></li>
+        <li><a href="mailto:redemoss@gmail.com">redemoss@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Mapes Baptist Church. All rights reserved.</span>
+    <span>11054 Blackwater Rd, Vanderhoof, BC</span>
+  </div>
+</footer>
+
+</body>
+</html>

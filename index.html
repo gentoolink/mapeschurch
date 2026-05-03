@@ -496,6 +496,34 @@
     /* ─── GALLERY ─── */
     .gallery-section { background: var(--warm-white); }
 
+    .calendar-section { background: var(--cream); }
+    .calendar-embed {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px #bbb;
+      overflow: hidden;
+      height: 600px;
+    }
+    .calendar-embed iframe {
+      border: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .calendar-link {
+      display: inline-block;
+      background: var(--forest);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      transition: background 0.3s;
+    }
+    .calendar-link:hover { background: var(--gold); color: #000; }
+
     .gallery-grid {
       max-width: 1100px;
       margin: 0 auto;
@@ -868,6 +896,26 @@
     <img src="https://images.unsplash.com/photo-1504052434569-70a583f257f8?w=400&q=80" alt="Congregation">
     <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=400&q=80" alt="Church building">
     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Fellowship">
+  </div>
+</section>
+
+<!-- ─── CALENDAR ─── -->
+<section class="section calendar-section" id="calendar">
+  <div class="section-header">
+    <div class="section-label">Upcoming Events</div>
+    <h2>Calendar</h2>
+    <p>Stay up to date with what's happening at Mapes Baptist Church.</p>
+  </div>
+  <div class="calendar-embed">
+    <iframe
+      src="https://calendar.google.com/calendar/embed?src=5eeac0e499af1e6b9c4bc6b9f913f5b8ee8d7cde95536114c888213159be163c%40group.calendar.google.com&ctz=America%2FVancouver&mode=AGENDA&showPrint=0&showTz=0"
+      scrolling="no"
+      allowfullscreen
+      title="Mapes Church Google Calendar">
+    </iframe>
+  </div>
+  <div style="text-align:center;">
+    <a class="calendar-link" href="https://calendar.google.com/calendar/embed?src=5eeac0e499af1e6b9c4bc6b9f913f5b8ee8d7cde95536114c888213159be163c%40group.calendar.google.com&ctz=America%2FVancouver" target="_blank">📅 View Full Calendar</a>
   </div>
 </section>
 

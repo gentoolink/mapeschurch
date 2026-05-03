@@ -547,13 +547,26 @@
 
     /* ─── CONTACT ─── */
     .contact-section { background: var(--cream); }
-
     .contact-grid {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .contact-info {  }
+    .contact-form {  }
+    .contact-map {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      height: 360px;
+    }
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
     .contact-info h3 {
@@ -975,6 +988,15 @@
         </div>
         <button type="submit" class="btn-primary" style="width:100%; margin-top:0.5rem;">Send Message</button>
       </form>
+    </div>
+    <div class="contact-map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d75126.80643251295!2d-123.9100593429354!3d53.95461061085475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x538845d4b867fdbf%3A0xc90d5f2d4b5c2144!2sMapes%20Baptist%20Church!5e0!3m2!1sen!2sca!4v1696206767466!5m2!1sen!2sca"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Mapes Baptist Church location">
+      </iframe>
     </div>
   </div>
 </section>

@@ -109,6 +109,31 @@
       color: var(--navy) !important;
     }
 
+    .nav-has-dropdown { position: relative; }
+
+    .nav-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--navy);
+      min-width: 190px;
+      border-radius: 0 0 4px 4px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      list-style: none;
+      padding: 0.4rem 0;
+      z-index: 200;
+      border-top: 2px solid var(--gold);
+    }
+
+    .nav-has-dropdown:hover .nav-dropdown { display: block; }
+
+    .nav-dropdown a {
+      padding: 0.55rem 1.1rem !important;
+      font-size: 0.82rem !important;
+      border-radius: 0 !important;
+    }
+
     .mobile-toggle {
       display: none;
       background: none;
@@ -317,6 +342,7 @@
       .nav-links { display: none; }
       .nav-links.show { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); padding: 0.5rem 1rem 1rem; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
       .mobile-toggle { display: block; }
+      .nav-has-dropdown .nav-dropdown { display: block; position: static; box-shadow: none; border-top: none; padding-left: 0.75rem; min-width: 0; }
       .footer-grid { grid-template-columns: 1fr; }
       .membership-card { padding: 1.5rem; }
     }
@@ -332,15 +358,24 @@
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#services">Services</a></li>
-    <li><a href="index.html#ministries">Ministries</a></li>
-    <li><a href="index.html#missions">Missions</a></li>
-    <li><a href="index.html#pastor">Pastor</a></li>
+    <li class="nav-has-dropdown">
+      <a href="index.html#about" class="active">About &#9662;</a>
+      <ul class="nav-dropdown">
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="index.html#pastor">Our Pastor</a></li>
+        <li><a href="faith.html">Statement of Faith</a></li>
+        <li><a href="membership.html" class="active">Membership</a></li>
+      </ul>
+    </li>
+    <li class="nav-has-dropdown">
+      <a href="index.html#ministries">Ministries &#9662;</a>
+      <ul class="nav-dropdown">
+        <li><a href="index.html#ministries">Ministries</a></li>
+        <li><a href="index.html#missions">Missions</a></li>
+      </ul>
+    </li>
     <li><a href="sermons.html">Sermons</a></li>
     <li><a href="give.html">Give</a></li>
-    <li><a href="faith.html">Faith</a></li>
-    <li><a href="membership.html" class="active">Membership</a></li>
     <li><a href="index.html#contact" class="nav-cta">Visit Us</a></li>
   </ul>
   <button class="mobile-toggle" aria-label="Open navigation menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='false'?'true':'false');document.querySelector('.nav-links').classList.toggle('show')">☰</button>

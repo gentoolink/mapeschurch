@@ -266,6 +266,140 @@
       color: var(--navy);
     }
 
+    /* ─── LIFE AT MAPES ─── */
+    .life-section {
+      padding: 5rem 2rem;
+      background: var(--cream);
+    }
+
+    .life-section .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .life-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .life-header .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .life-header h2 {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .life-header p {
+      font-size: 0.975rem;
+      color: var(--ink-muted);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .album-group {
+      margin-bottom: 3rem;
+    }
+
+    .album-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .album-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gold);
+      display: inline-block;
+    }
+
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+
+    .carousel-slide { min-width: 100%; }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(27,58,92,0.72);
+      color: var(--gold);
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 1.75rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 10;
+    }
+
+    .carousel-btn:hover { background: var(--navy); }
+    .carousel-btn.prev { left: 1rem; }
+    .carousel-btn.next { right: 1rem; }
+
+    .carousel-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      padding: 0.75rem 0 0;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .carousel-dot.active {
+      background: var(--navy);
+      transform: scale(1.35);
+    }
+
+    .carousel[data-count="1"] .carousel-btn,
+    .carousel[data-count="1"] .carousel-footer { display: none; }
+
+    @media (max-width: 640px) {
+      .carousel-slide img { height: 260px; }
+      .carousel-btn { width: 36px; height: 36px; font-size: 1.25rem; }
+    }
+
     /* ─── FOOTER ─── */
     footer {
       background: var(--navy);
@@ -411,6 +545,75 @@
 
 </section>
 
+<!-- ─── LIFE AT MAPES ─── -->
+<section class="life-section">
+  <div class="section-inner">
+    <div class="life-header">
+      <div class="section-label">Our Community</div>
+      <h2>Life at Mapes</h2>
+      <p>A glimpse into the moments that make us a family — serving, celebrating, and growing together.</p>
+    </div>
+
+    <div class="album-group">
+      <div class="album-title">Serving the Community</div>
+      <div class="carousel" data-count="1">
+        <div class="carousel-track">
+          <div class="carousel-slide"><img src="photo-albums/Serving%20the%20Community/mapes%20church%20helpers.jpg" alt="Mapes Church helpers serving the community" loading="lazy"></div>
+        </div>
+        <button class="carousel-btn prev" aria-label="Previous photo">&#8249;</button>
+        <button class="carousel-btn next" aria-label="Next photo">&#8250;</button>
+        <div class="carousel-footer">
+          <button class="carousel-dot active" aria-label="Photo 1"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="album-group">
+      <div class="album-title">VBS 2024</div>
+      <div class="carousel" data-count="16">
+        <div class="carousel-track">
+          <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240707_183158.jpg" alt="VBS 2024" loading="lazy"></div>
+          <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240709_204552.jpg" alt="VBS 2024" loading="lazy"></div>
+          <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240708_182009.jpg" alt="VBS 2024" loading="lazy"></div>
+          <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240708_183717.jpg" alt="VBS 2024" loading="lazy"></div>
+          <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240708_183758.jpg" alt="VBS 2024" loading="lazy"></div>
+          <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240708_184904.jpg" alt="VBS 2024" loading="lazy"></div>
+          <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240708_192006.jpg" alt="VBS 2024" loading="lazy"></div>
+          <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240708_192142.jpg" alt="VBS 2024" loading="lazy"></div>
+          <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240709_181220.jpg" alt="VBS 2024" loading="lazy"></div>
+          <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240709_184107.jpg" alt="VBS 2024" loading="lazy"></div>
+          <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240709_195313.jpg" alt="VBS 2024" loading="lazy"></div>
+          <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240707_183808.jpg" alt="VBS 2024" loading="lazy"></div>
+          <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240711_180732.jpg" alt="VBS 2024" loading="lazy"></div>
+          <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240711_180744.jpg" alt="VBS 2024" loading="lazy"></div>
+          <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240711_180857.jpg" alt="VBS 2024" loading="lazy"></div>
+          <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240711_180859.jpg" alt="VBS 2024" loading="lazy"></div>
+        </div>
+        <button class="carousel-btn prev" aria-label="Previous photo">&#8249;</button>
+        <button class="carousel-btn next" aria-label="Next photo">&#8250;</button>
+        <div class="carousel-footer">
+          <button class="carousel-dot active" aria-label="Photo 1"></button>
+          <button class="carousel-dot" aria-label="Photo 2"></button>
+          <button class="carousel-dot" aria-label="Photo 3"></button>
+          <button class="carousel-dot" aria-label="Photo 4"></button>
+          <button class="carousel-dot" aria-label="Photo 5"></button>
+          <button class="carousel-dot" aria-label="Photo 6"></button>
+          <button class="carousel-dot" aria-label="Photo 7"></button>
+          <button class="carousel-dot" aria-label="Photo 8"></button>
+          <button class="carousel-dot" aria-label="Photo 9"></button>
+          <button class="carousel-dot" aria-label="Photo 10"></button>
+          <button class="carousel-dot" aria-label="Photo 11"></button>
+          <button class="carousel-dot" aria-label="Photo 12"></button>
+          <button class="carousel-dot" aria-label="Photo 13"></button>
+          <button class="carousel-dot" aria-label="Photo 14"></button>
+          <button class="carousel-dot" aria-label="Photo 15"></button>
+          <button class="carousel-dot" aria-label="Photo 16"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── FOOTER ─── -->
 <footer>
   <div class="footer-grid">
@@ -443,5 +646,33 @@
   </div>
 </footer>
 
+<script>
+  document.querySelectorAll('.carousel').forEach(function(carousel) {
+    var track = carousel.querySelector('.carousel-track');
+    var slides = carousel.querySelectorAll('.carousel-slide');
+    var dots = carousel.querySelectorAll('.carousel-dot');
+    var count = slides.length;
+    var cur = 0;
+
+    function go(n) {
+      cur = (n + count) % count;
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === cur); });
+    }
+
+    var prev = carousel.querySelector('.carousel-btn.prev');
+    var next = carousel.querySelector('.carousel-btn.next');
+    if (prev) prev.addEventListener('click', function() { go(cur - 1); });
+    if (next) next.addEventListener('click', function() { go(cur + 1); });
+    dots.forEach(function(d, i) { d.addEventListener('click', function() { go(i); }); });
+
+    var touchX = 0;
+    carousel.addEventListener('touchstart', function(e) { touchX = e.touches[0].clientX; }, {passive: true});
+    carousel.addEventListener('touchend', function(e) {
+      var dx = touchX - e.changedTouches[0].clientX;
+      if (Math.abs(dx) > 40) go(dx > 0 ? cur + 1 : cur - 1);
+    }, {passive: true});
+  });
+</script>
 </body>
 </html>

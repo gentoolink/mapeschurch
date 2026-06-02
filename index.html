@@ -581,27 +581,81 @@
     }
     .calendar-link:hover { background: var(--gold); color: #000; }
 
-    .gallery-grid {
+    .gallery-carousel {
       max-width: 1100px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, 220px);
-      gap: 0.75rem;
+      position: relative;
       overflow: hidden;
+      border-radius: 6px;
     }
 
-    .gallery-grid img {
+    .gallery-carousel .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-carousel .carousel-slide { min-width: 100%; }
+
+    .gallery-carousel .carousel-slide img {
       width: 100%;
-      height: 100%;
+      height: 520px;
       object-fit: cover;
-      border-radius: 3px;
-      transition: transform 0.3s;
+      object-position: center;
+      display: block;
     }
 
-    .gallery-grid img:hover { transform: scale(1.02); }
+    .gallery-carousel .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(27,58,92,0.72);
+      color: var(--gold);
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 1.75rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 10;
+    }
 
-    .gallery-grid .g1 { grid-column: span 2; grid-row: span 2; height: 100%; }
+    .gallery-carousel .carousel-btn:hover { background: var(--navy); }
+    .gallery-carousel .carousel-btn.prev { left: 1rem; }
+    .gallery-carousel .carousel-btn.next { right: 1rem; }
+
+    .gallery-carousel .carousel-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.75rem 0 0;
+    }
+
+    .gallery-carousel .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .gallery-carousel .carousel-dot.active {
+      background: var(--navy);
+      transform: scale(1.35);
+    }
+
+    @media (max-width: 640px) {
+      .gallery-carousel .carousel-slide img { height: 280px; }
+      .gallery-carousel .carousel-btn { width: 36px; height: 36px; font-size: 1.25rem; }
+    }
 
     /* ─── CONTACT ─── */
     .contact-section { background: var(--cream); }
@@ -739,8 +793,6 @@
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .pastor-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
-      .gallery-grid .g1 { grid-column: span 2; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
 
@@ -749,8 +801,6 @@
       .nav-links.show { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); padding: 0.5rem 1rem 1rem; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
       .mobile-toggle { display: block; }
       .nav-has-dropdown .nav-dropdown { display: block; position: static; box-shadow: none; border-top: none; padding-left: 0.75rem; min-width: 0; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .gallery-grid .g1 { grid-column: span 1; }
       .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -968,12 +1018,23 @@
     <h2>Life at Mapes</h2>
     <p>A glimpse into worship, fellowship, and the community we share in Christ.</p>
   </div>
-  <div class="gallery-grid">
-    <img class="g1" src="images/gallery-3.png" alt="Sunday worship">
-    <img src="images/gallery-4.jpg" alt="Congregation">
-    <img src="images/church.jpg" alt="Church building">
-    <img src="images/gallery-2.jpg" alt="Fellowship">
-    <img src="images/gallery-new.jpg" alt="Life at Mapes">
+  <div class="gallery-carousel">
+    <div class="carousel-track">
+      <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240707_183808.jpg" alt="VBS 2024"></div>
+      <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240708_192006.jpg" alt="VBS 2024"></div>
+      <div class="carousel-slide"><img src="images/church.jpg" alt="Church building"></div>
+      <div class="carousel-slide"><img src="photo-albums/VBS%202024/20240711_180732.jpg" alt="VBS 2024"></div>
+      <div class="carousel-slide"><img src="images/gallery-new.jpg" alt="Life at Mapes"></div>
+    </div>
+    <button class="carousel-btn prev" aria-label="Previous photo">&#8249;</button>
+    <button class="carousel-btn next" aria-label="Next photo">&#8250;</button>
+    <div class="carousel-footer">
+      <button class="carousel-dot active" aria-label="Photo 1"></button>
+      <button class="carousel-dot" aria-label="Photo 2"></button>
+      <button class="carousel-dot" aria-label="Photo 3"></button>
+      <button class="carousel-dot" aria-label="Photo 4"></button>
+      <button class="carousel-dot" aria-label="Photo 5"></button>
+    </div>
   </div>
 </section>
 
@@ -1080,5 +1141,31 @@
   </div>
 </footer>
 
+<script>
+  document.querySelectorAll('.gallery-carousel').forEach(function(carousel) {
+    var track = carousel.querySelector('.carousel-track');
+    var slides = carousel.querySelectorAll('.carousel-slide');
+    var dots = carousel.querySelectorAll('.carousel-dot');
+    var count = slides.length;
+    var cur = 0;
+
+    function go(n) {
+      cur = (n + count) % count;
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === cur); });
+    }
+
+    carousel.querySelector('.carousel-btn.prev').addEventListener('click', function() { go(cur - 1); });
+    carousel.querySelector('.carousel-btn.next').addEventListener('click', function() { go(cur + 1); });
+    dots.forEach(function(d, i) { d.addEventListener('click', function() { go(i); }); });
+
+    var touchX = 0;
+    carousel.addEventListener('touchstart', function(e) { touchX = e.touches[0].clientX; }, {passive: true});
+    carousel.addEventListener('touchend', function(e) {
+      var dx = touchX - e.changedTouches[0].clientX;
+      if (Math.abs(dx) > 40) go(dx > 0 ? cur + 1 : cur - 1);
+    }, {passive: true});
+  });
+</script>
 </body>
 </html>

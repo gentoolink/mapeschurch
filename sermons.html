@@ -578,7 +578,6 @@
     <div class="sermon-skeleton"><div class="skel-thumb"></div><div class="skel-body"><div class="skel-line short"></div><div class="skel-line tall medium"></div><div class="skel-line full"></div><div class="skel-line full"></div><div class="skel-line medium"></div></div></div>
     <div class="sermon-skeleton"><div class="skel-thumb"></div><div class="skel-body"><div class="skel-line short"></div><div class="skel-line tall medium"></div><div class="skel-line full"></div><div class="skel-line full"></div><div class="skel-line medium"></div></div></div>
     <div class="sermon-skeleton"><div class="skel-thumb"></div><div class="skel-body"><div class="skel-line short"></div><div class="skel-line tall medium"></div><div class="skel-line full"></div><div class="skel-line full"></div><div class="skel-line medium"></div></div></div>
-    <div class="sermon-skeleton"><div class="skel-thumb"></div><div class="skel-body"><div class="skel-line short"></div><div class="skel-line tall medium"></div><div class="skel-line full"></div><div class="skel-line full"></div><div class="skel-line medium"></div></div></div>
   </div>
 </div>
 
@@ -637,7 +636,7 @@
 
       // 2. Fetch latest 4 videos from uploads playlist (costs 1 quota unit)
       const plRes = await fetch(
-        `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsId}&maxResults=4&key=${YT_API_KEY}`
+        `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsId}&maxResults=3&key=${YT_API_KEY}`
       );
       const plData = await plRes.json();
       if (!plData.items || !plData.items.length) throw new Error('No videos found');

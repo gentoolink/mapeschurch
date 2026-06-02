@@ -372,6 +372,41 @@
 
     .read-btn:hover { color: var(--navy); }
 
+    /* ─── SKELETON LOADING ─── */
+    .sermon-skeleton {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .skel-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #e8e2d9;
+      animation: skel-pulse 1.4s ease-in-out infinite;
+    }
+
+    .skel-body { padding: 1.5rem; }
+
+    .skel-line {
+      height: 0.75rem;
+      border-radius: 4px;
+      background: #e8e2d9;
+      margin-bottom: 0.75rem;
+      animation: skel-pulse 1.4s ease-in-out infinite;
+    }
+
+    .skel-line.short { width: 40%; }
+    .skel-line.medium { width: 70%; }
+    .skel-line.full { width: 100%; }
+    .skel-line.tall { height: 1.25rem; margin-bottom: 1rem; }
+
+    @keyframes skel-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.45; }
+    }
+
     /* ─── VIDEO MODAL ─── */
     .modal-overlay {
       display: none;
@@ -533,124 +568,17 @@
   </div>
 </div>
 
-<!-- ─── FILTERS ─── -->
-<div class="filters">
-  <button class="filter-btn active" onclick="filterSermons(this, 'all')">All Sermons</button>
-  <button class="filter-btn" onclick="filterSermons(this, 'pastor-ron')">Pastor Ron</button>
-  <button class="filter-btn" onclick="filterSermons(this, 'guest')">Guest Speakers</button>
-  <button class="filter-btn" onclick="filterSermons(this, 'seasonal')">Seasonal</button>
-</div>
-
 <!-- ─── SERMONS ─── -->
 <div class="sermons-section">
+  <div class="section-label">Latest Messages</div>
+  <h2 class="section-title">Recent Sermons</h2>
 
   <div class="sermons-grid" id="sermons-grid">
-
-    <!-- 1. Dead to Sin, Alive in Christ -->
-    <div class="sermon-card" data-category="pastor-ron" data-yt="uEaFtpRTY18">
-      <div class="sermon-thumb" onclick="openVideo('uEaFtpRTY18')">
-        <img src="https://img.youtube.com/vi/uEaFtpRTY18/maxresdefault.jpg" alt="Dead to Sin, Alive in Christ">
-        <div class="sermon-play-btn">
-          <div class="play-btn">▶</div>
-        </div>
-      </div>
-      <div class="sermon-body">
-        <div class="sermon-meta">
-          <span class="sermon-scripture">Ephesians 2</span>
-          <span class="sermon-speaker">Pastor Ron</span>
-        </div>
-        <h3>Dead to Sin, Alive in Christ</h3>
-        <p>Pastor Ron teaches that we are all dead in trespasses and sin until we trust Jesus Christ as our personal Lord and Savior. He emphasizes remembering our past life before Christ and how God's mercy and love have changed us. Themes include being made alive together with Christ by grace, seated with Him in heavenly places, and being built together into a dwelling place for God.</p>
-        <div class="sermon-footer">
-          <span class="watch-btn" onclick="openVideo('uEaFtpRTY18')">▶ Watch</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3. The Holy Spirit -->
-    <div class="sermon-card" data-category="pastor-ron" data-yt="o6UpeReFc2w">
-      <div class="sermon-thumb" onclick="openVideo('o6UpeReFc2w')">
-        <img src="https://img.youtube.com/vi/o6UpeReFc2w/maxresdefault.jpg" alt="The Holy Spirit">
-        <div class="sermon-play-btn">
-          <div class="play-btn">▶</div>
-        </div>
-      </div>
-      <div class="sermon-body">
-        <div class="sermon-meta">
-          <span class="sermon-scripture">The Holy Spirit</span>
-          <span class="sermon-speaker">Pastor Ron</span>
-        </div>
-        <h3>Make Room for the Spirit of God</h3>
-        <p>Pastor Ron explores the person and work of the Holy Spirit — what it means to make room for God's Spirit in our daily lives, and how the Spirit empowers believers to live for Christ in a world that often resists Him.</p>
-        <div class="sermon-footer">
-          <span class="watch-btn" onclick="openVideo('o6UpeReFc2w')">▶ Watch</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 5. Spiritual Power -->
-    <div class="sermon-card" data-category="pastor-ron" data-yt="rbd68-Lcm6I">
-      <div class="sermon-thumb" onclick="openVideo('rbd68-Lcm6I')">
-        <img src="https://img.youtube.com/vi/rbd68-Lcm6I/mqdefault.jpg" alt="Spiritual Power">
-        <div class="sermon-play-btn">
-          <div class="play-btn">▶</div>
-        </div>
-      </div>
-      <div class="sermon-body">
-        <div class="sermon-meta">
-          <span class="sermon-scripture">Spiritual Power</span>
-          <span class="sermon-speaker">Pastor Ron</span>
-        </div>
-        <h3>Spiritual Power</h3>
-        <p>Pastor Ron delivers a message on spiritual power — how the Holy Spirit equips and empowers believers for service, evangelism, and bold witness in a world that desperately needs the gospel.</p>
-        <div class="sermon-footer">
-          <span class="watch-btn" onclick="openVideo('rbd68-Lcm6I')">▶ Watch</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7. What is Redemption? -->
-    <div class="sermon-card" data-category="pastor-ron" data-yt="mBjAJMrBFT8">
-      <div class="sermon-thumb" onclick="openVideo('mBjAJMrBFT8')">
-        <img src="https://img.youtube.com/vi/mBjAJMrBFT8/maxresdefault.jpg" alt="What is Redemption?">
-        <div class="sermon-play-btn">
-          <div class="play-btn">▶</div>
-        </div>
-      </div>
-      <div class="sermon-body">
-        <div class="sermon-meta">
-          <span class="sermon-scripture">Redemption</span>
-          <span class="sermon-speaker">Pastor Ron</span>
-        </div>
-        <h3>What is Redemption?</h3>
-        <p>Pastor Ron unpacks the biblical meaning of redemption — being bought back by God through Christ's sacrifice. A message on God's plan to rescue humanity from sin and restore relationship with Him.</p>
-        <div class="sermon-footer">
-          <span class="watch-btn" onclick="openVideo('mBjAJMrBFT8')">▶ Watch</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 9. The Light of God -->
-    <div class="sermon-card" data-category="pastor-ron" data-yt="FX4q7bzTeyM">
-      <div class="sermon-thumb" onclick="openVideo('FX4q7bzTeyM')">
-        <img src="https://img.youtube.com/vi/FX4q7bzTeyM/maxresdefault.jpg" alt="The Light of God">
-        <div class="sermon-play-btn">
-          <div class="play-btn">▶</div>
-        </div>
-      </div>
-      <div class="sermon-body">
-        <div class="sermon-meta">
-          <span class="sermon-scripture">Light & Darkness</span>
-          <span class="sermon-speaker">Pastor Ron</span>
-        </div>
-        <h3>The Light of God</h3>
-        <p>Pastor Ron explores the theme of God's light overcoming darkness — in creation, in Scripture, and in the human heart. A message on walking in the light and reflecting Christ in a dark world.</p>
-        <div class="sermon-footer">
-          <span class="watch-btn" onclick="openVideo('FX4q7bzTeyM')">▶ Watch</span>
-        </div>
-      </div>
-    </div>
-
+    <!-- Skeleton placeholders shown while YouTube API loads -->
+    <div class="sermon-skeleton"><div class="skel-thumb"></div><div class="skel-body"><div class="skel-line short"></div><div class="skel-line tall medium"></div><div class="skel-line full"></div><div class="skel-line full"></div><div class="skel-line medium"></div></div></div>
+    <div class="sermon-skeleton"><div class="skel-thumb"></div><div class="skel-body"><div class="skel-line short"></div><div class="skel-line tall medium"></div><div class="skel-line full"></div><div class="skel-line full"></div><div class="skel-line medium"></div></div></div>
+    <div class="sermon-skeleton"><div class="skel-thumb"></div><div class="skel-body"><div class="skel-line short"></div><div class="skel-line tall medium"></div><div class="skel-line full"></div><div class="skel-line full"></div><div class="skel-line medium"></div></div></div>
+    <div class="sermon-skeleton"><div class="skel-thumb"></div><div class="skel-body"><div class="skel-line short"></div><div class="skel-line tall medium"></div><div class="skel-line full"></div><div class="skel-line full"></div><div class="skel-line medium"></div></div></div>
   </div>
 </div>
 
@@ -693,10 +621,70 @@
 </footer>
 
 <script>
+  const YT_API_KEY = 'AIzaSyDjTnblqBW9oS1HFnt4vOwuwoPCIyWC0u0';
+  const YT_HANDLE  = 'mapeschurch';
+
+  async function loadLatestSermons() {
+    const grid = document.getElementById('sermons-grid');
+    try {
+      // 1. Resolve handle → uploads playlist ID (costs 1 quota unit)
+      const chRes = await fetch(
+        `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=${YT_HANDLE}&key=${YT_API_KEY}`
+      );
+      const chData = await chRes.json();
+      if (!chData.items || !chData.items.length) throw new Error('Channel not found');
+      const uploadsId = chData.items[0].contentDetails.relatedPlaylists.uploads;
+
+      // 2. Fetch latest 4 videos from uploads playlist (costs 1 quota unit)
+      const plRes = await fetch(
+        `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsId}&maxResults=4&key=${YT_API_KEY}`
+      );
+      const plData = await plRes.json();
+      if (!plData.items || !plData.items.length) throw new Error('No videos found');
+
+      grid.innerHTML = plData.items.map(item => {
+        const s       = item.snippet;
+        const videoId = s.resourceId.videoId;
+        const title   = s.title.replace(/</g, '&lt;');
+        const desc    = s.description.replace(/</g, '&lt;');
+        const thumb   = (s.thumbnails.maxres || s.thumbnails.high || s.thumbnails.medium).url;
+        const date    = new Date(s.publishedAt).toLocaleDateString('en-CA', {
+          year: 'numeric', month: 'long', day: 'numeric'
+        });
+        return `
+          <div class="sermon-card">
+            <div class="sermon-thumb" onclick="openVideo('${videoId}')">
+              <img src="${thumb}" alt="${title}" loading="lazy">
+              <div class="sermon-play-btn"><div class="play-btn">&#9654;</div></div>
+            </div>
+            <div class="sermon-body">
+              <div class="sermon-meta">
+                <span class="sermon-scripture">${date}</span>
+                <span class="sermon-speaker">Mapes Church</span>
+              </div>
+              <h3>${title}</h3>
+              <p>${desc}</p>
+              <div class="sermon-footer">
+                <span class="watch-btn" onclick="openVideo('${videoId}')">&#9654; Watch</span>
+                <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener" class="read-btn">YouTube &#8599;</a>
+              </div>
+            </div>
+          </div>`;
+      }).join('');
+
+    } catch (err) {
+      grid.innerHTML = `
+        <div style="grid-column:1/-1;text-align:center;padding:3rem 1rem;color:var(--ink-muted);">
+          <p style="margin-bottom:1rem;">Unable to load sermons right now.</p>
+          <a href="https://youtube.com/@mapeschurch" target="_blank" rel="noopener"
+             style="color:var(--navy-light);font-weight:600;">Watch on YouTube &rarr;</a>
+        </div>`;
+    }
+  }
+
   function openVideo(id) {
     const overlay = document.getElementById('video-modal');
-    const iframe = overlay.querySelector('iframe');
-    iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1';
+    overlay.querySelector('iframe').src = 'https://www.youtube.com/embed/' + id + '?autoplay=1';
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -711,18 +699,7 @@
     if (e.target === this) closeVideo();
   });
 
-  function filterSermons(btn, category) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const cards = document.querySelectorAll('.sermon-card');
-    cards.forEach(card => {
-      if (category === 'all' || card.dataset.category === category) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  }
+  loadLatestSermons();
 </script>
 
 </body>

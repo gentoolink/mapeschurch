@@ -50,3 +50,4 @@ User-agent: msnbot
 Allow: /
 
 Sitemap: https://www.mapeschurch.com/sitemap.xml
+LLMs: https://www.mapeschurch.com/llms.txt

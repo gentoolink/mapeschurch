@@ -806,6 +806,86 @@
       .nav-has-dropdown .nav-dropdown { display: block; position: static; box-shadow: none; border-top: none; padding-left: 0.75rem; min-width: 0; }
       .footer-grid { grid-template-columns: 1fr; }
     }
+
+    /* ─── NEWS TICKER ─── */
+    .news-ticker {
+      background: var(--navy);
+      border-bottom: 2px solid var(--gold);
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      height: 2.6rem;
+    }
+
+    .ticker-label {
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding: 0 1.1rem;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .ticker-track-wrap {
+      overflow: hidden;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
+    }
+
+    .ticker-track {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      animation: ticker-scroll 40s linear infinite;
+      will-change: transform;
+    }
+
+    .ticker-track:hover { animation-play-state: paused; }
+
+    .ticker-item {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #fff;
+      padding: 0 0.5rem;
+    }
+
+    .ticker-item a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 600;
+    }
+
+    .ticker-item a:hover { color: var(--gold-light); }
+
+    .ticker-sep {
+      color: var(--gold);
+      font-size: 1rem;
+      padding: 0 1rem;
+      flex-shrink: 0;
+      opacity: 0.6;
+    }
+
+    @keyframes ticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ticker-track { animation: none; }
+      .ticker-track-wrap { mask-image: none; -webkit-mask-image: none; overflow-x: auto; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -873,9 +953,43 @@
   <button class="mobile-toggle" aria-label="Open navigation menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='false'?'true':'false');document.querySelector('.nav-links').classList.toggle('show')">☰</button>
 </nav>
 
-<!-- ─── VBS NOTICE BANNER ─── -->
-<div style="background:#C8A45E;color:#1B3A5C;text-align:center;padding:0.75rem 1.5rem;font-family:'Inter',system-ui,sans-serif;font-size:0.95rem;font-weight:600;letter-spacing:0.01em;">
-  ✝ VBS Registration is Open! &nbsp;<a href="https://www.mapeschurch.com/vbs.html#register" style="color:#1B3A5C;text-decoration:underline;font-weight:700;">Register your child today →</a>
+<!-- ─── NEWS TICKER ─── -->
+<div class="news-ticker" role="marquee" aria-label="VBS 2026 announcements">
+  <div class="ticker-label" aria-hidden="true">VBS 2026</div>
+  <div class="ticker-track-wrap">
+    <div class="ticker-track">
+      <!-- Items duplicated for seamless loop -->
+      <span class="ticker-item">🎉 Illumination Station VBS 2026 is coming to Mapes Baptist Church!</span>
+      <span class="ticker-sep" aria-hidden="true">✦</span>
+      <span class="ticker-item">📅 July 12–16, 2026 — Five nights of Bible stories, games, crafts &amp; music</span>
+      <span class="ticker-sep" aria-hidden="true">✦</span>
+      <span class="ticker-item">🚀 Launch Night: <strong>Sunday July 12 at 6:00 PM</strong> — Bouncy castles, snacks &amp; fun!</span>
+      <span class="ticker-sep" aria-hidden="true">✦</span>
+      <span class="ticker-item">👨‍👩‍👧 Parents, you're welcome to join us on launch night!</span>
+      <span class="ticker-sep" aria-hidden="true">✦</span>
+      <span class="ticker-item">🕡 Nightly 6:30–8:30 PM (Mon–Thu) &nbsp;·&nbsp; Sunday 6:00–8:30 PM</span>
+      <span class="ticker-sep" aria-hidden="true">✦</span>
+      <span class="ticker-item">🎒 Open to Kindergarten through Grade 12</span>
+      <span class="ticker-sep" aria-hidden="true">✦</span>
+      <span class="ticker-item">📝 Registration is open — <a href="vbs.html#register">Register your child today →</a></span>
+      <span class="ticker-sep" aria-hidden="true">✦</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="ticker-item">🎉 Illumination Station VBS 2026 is coming to Mapes Baptist Church!</span>
+      <span class="ticker-sep" aria-hidden="true">✦</span>
+      <span class="ticker-item">📅 July 12–16, 2026 — Five nights of Bible stories, games, crafts &amp; music</span>
+      <span class="ticker-sep" aria-hidden="true">✦</span>
+      <span class="ticker-item">🚀 Launch Night: <strong>Sunday July 12 at 6:00 PM</strong> — Bouncy castles, snacks &amp; fun!</span>
+      <span class="ticker-sep" aria-hidden="true">✦</span>
+      <span class="ticker-item">👨‍👩‍👧 Parents, you're welcome to join us on launch night!</span>
+      <span class="ticker-sep" aria-hidden="true">✦</span>
+      <span class="ticker-item">🕡 Nightly 6:30–8:30 PM (Mon–Thu) &nbsp;·&nbsp; Sunday 6:00–8:30 PM</span>
+      <span class="ticker-sep" aria-hidden="true">✦</span>
+      <span class="ticker-item">🎒 Open to Kindergarten through Grade 12</span>
+      <span class="ticker-sep" aria-hidden="true">✦</span>
+      <span class="ticker-item">📝 Registration is open — <a href="vbs.html#register">Register your child today →</a></span>
+      <span class="ticker-sep" aria-hidden="true">✦</span>
+    </div>
+  </div>
 </div>
 
 <!-- ─── HERO ─── -->

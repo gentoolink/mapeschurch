@@ -31,6 +31,7 @@
       --navy-light: #2C5282;
       --gold: #C8A45E;
       --gold-light: #E8D5A3;
+      --gold-dark: #8A6D28;   /* AA-compliant gold for light backgrounds (4.6:1 on cream) */
       --cream: #FAF7F2;
       --warm-white: #FDFCFA;
       --ink: #2D2D2D;
@@ -141,7 +142,15 @@
       border-top: 2px solid var(--gold);
     }
 
-    .nav-has-dropdown:hover .nav-dropdown { display: block; }
+    .nav-has-dropdown:hover .nav-dropdown,
+    .nav-has-dropdown:focus-within .nav-dropdown { display: block; }
+
+    .nav-links a:focus-visible,
+    .mobile-toggle:focus-visible {
+      outline: 2px solid var(--gold-light);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
 
     .nav-dropdown a {
       padding: 0.55rem 1.1rem !important;
@@ -310,7 +319,7 @@
       font-size: 0.7rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-dark);
       font-weight: 600;
       margin-bottom: 0.75rem;
     }
@@ -546,7 +555,7 @@
       font-size: 0.8rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-dark);
       font-weight: 600;
       margin-bottom: 1.25rem;
     }
@@ -727,14 +736,14 @@
       justify-content: center;
       flex-shrink: 0;
       font-size: 1rem;
-      color: var(--gold);
+      color: var(--gold-dark);
     }
 
     .contact-label {
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--gold);
+      color: var(--gold-dark);
       font-weight: 600;
       margin-bottom: 0.2rem;
     }

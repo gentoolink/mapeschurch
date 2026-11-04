@@ -683,9 +683,6 @@
         const title   = s.title.replace(/</g, '&lt;');
         const desc    = s.description.replace(/</g, '&lt;');
         const thumb   = (s.thumbnails.maxres || s.thumbnails.high || s.thumbnails.medium).url;
-        const date    = new Date(s.publishedAt).toLocaleDateString('en-CA', {
-          year: 'numeric', month: 'long', day: 'numeric'
-        });
         return `
           <div class="sermon-card">
             <div class="sermon-thumb" onclick="openVideo('${videoId}')">
@@ -694,7 +691,6 @@
             </div>
             <div class="sermon-body">
               <div class="sermon-meta">
-                <span class="sermon-scripture">${date}</span>
                 <span class="sermon-speaker">Mapes Church</span>
               </div>
               <h3>${title}</h3>
